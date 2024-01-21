@@ -3,7 +3,7 @@ import {
   registerController,
   loginController,
   testController,
-  forgotPassController
+  forgotPassController,
 } from "../controllers/authController.js";
 import { requireSign } from "../middlewares/authMiddleware.js";
 import { isAdmin } from "../middlewares/authMiddleware.js";
@@ -14,11 +14,14 @@ router.post("/register", registerController);
 router.post("/login", loginController);
 // router.post("/test", requireSign, isAdmin, testController);
 
-router.post("/forgotpass", forgotPassController)
-
+router.post("/forgotpass", forgotPassController);
 
 //protected route
 router.get("/user-auth", requireSign, (req, res) => {
+  res.status(200).send({ ok: true });
+});
+//protected route
+router.get("/admin-auth", requireSign, isAdmin, (req, res) => {
   res.status(200).send({ ok: true });
 });
 
