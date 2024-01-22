@@ -3,8 +3,10 @@ import colors from "colors";
 import dotenv from "dotenv";
 import connectdb from "./config/db.js";
 import morgan from "morgan";
-import authRote from "./routes/authRoute.js";
 import cors from "cors";
+import authRote from "./routes/authRoute.js";
+import categoryRoute from "./routes/categoryRoute.js";
+import productRoute from "./routes/productRoute.js";
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ app.get("/", (req, res) => {
 
 //all routes
 app.use("/api/v1/auth", authRote);
+app.use("/api/v1/category", categoryRoute);
+app.use("/api/v1/product", productRoute);
 
 let PORT = process.env.PORT || 8000;
 
