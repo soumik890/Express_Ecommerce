@@ -6,21 +6,33 @@ import {
   singleProductController,
   updateProductController,
   deleteProductController,
+  productPhotoController,
 } from "../controllers/productController.js";
+import formidable from "express-formidable";
 
 const router = express.Router();
 
-router.post("/create-product", requireSign, isAdmin, createProductController);
-router.put(
-  "/update-category/:id",
+router.post(
+  "/create-product",
   requireSign,
   isAdmin,
+  formidable(),
+  createProductController
+);
+router.put(
+  "/update-product/:pid",
+  requireSign,
+  isAdmin,
+  formidable(),
   updateProductController
 );
-router.get("/get-category", getProductController);
-router.get("/single-category/:slug", singleProductController);
+router.get("/get-product", getProductController);
+router.get("/single-product/:slug", singleProductController);
+
+router.get("/product-photo/:pid", productPhotoController);
+
 router.delete(
-  "/delete-product/:id",
+  "/delete-product/:pid",
   requireSign,
   isAdmin,
   deleteProductController

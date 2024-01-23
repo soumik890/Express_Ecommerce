@@ -5,6 +5,7 @@ const productSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+      trim: true,
     },
     slug: {
       type: String,
@@ -20,7 +21,7 @@ const productSchema = new mongoose.Schema(
     },
     category: {
       type: mongoose.ObjectId,
-      ref: "Category",
+      ref: "categoryModel",
       required: true,
     },
     quantity: {
