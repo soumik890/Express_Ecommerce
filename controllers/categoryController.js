@@ -22,7 +22,7 @@ export const createcategoryController = async (req, res) => {
     }).save();
 
     res.status(201).send({
-      sucess: true,
+      success: true,
       message: "new category created",
       category,
     });
@@ -50,7 +50,7 @@ export const updatecategoryController = async (req, res) => {
     );
 
     res.status(201).send({
-      sucess: true,
+      success: true,
       message: "category updated",
       category,
     });
